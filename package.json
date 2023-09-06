@@ -1,22 +1,30 @@
 {
-  "name": "starter-express-api",
+  "name": "prod-line-functions",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cyclic-software/starter-express-api.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cyclic-software/starter-express-api/issues"
-  },
-  "homepage": "https://github.com/cyclic-software/starter-express-api#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "chart.js": "^3.5.1",
+    "chartjs-node-canvas": "^4.1.6",
+    "chartjs-plugin-datalabels": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.5.0",
+    "fs": "^0.0.1-security",
+    "memorystream": "^0.3.1",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.2",
+    "nodemon": "^2.0.22",
+    "pdfkit": "^0.13.0",
+    "pdfkit-table": "^0.1.99",
+    "svg-to-pdfkit": "^0.1.8"
   }
 }
