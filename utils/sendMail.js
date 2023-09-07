@@ -1,12 +1,6 @@
 const nodemailer = require("nodemailer");
-const fs = require("fs");
-
 //host: "192.168.111.35",
-
-const output = fs.createWriteStream('./stdout.log');
-const errorOutput = fs.createWriteStream('./stderr.log');
 // custom simple logger
-const logger = new console.Console(output, errorOutput);
 
 let transporter = nodemailer.createTransport({
     host: "smtp.eajb.com.sa",
@@ -169,11 +163,9 @@ async function sendReport() {
     transporter.sendMail(options, (err, info) => {
         if (err) {
             console.log(err);
-            logger.log('error: %d', err);
             return;
         }
         console.log(info.response);
-        logger.log('sucess: %d', info.response);
     });
 }
 
@@ -310,11 +302,9 @@ async function sendWarning(email, line, subject, msg) {
         transporter.sendMail(options, (err, info) => {
             if (err) {
                 console.log(err);
-                logger.log('error: %d', err);
                 return reject(err);
             }
             console.log(info);
-            logger.log('error: %d', info);
             resolve(info);
         });
     });
