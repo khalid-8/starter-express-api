@@ -1,6 +1,5 @@
 const api = require("express")
 const router = api.Router()
-const {generatePDFWithCharts} = require("./chartsToPdf")
 const {sendWarning} = require("./sendMail")
 const cors = require('cors')
 const {auth, admin} = require('./firebase')
@@ -26,47 +25,6 @@ router.use(api.json())
 
 router.use(cors(corsOptions))
 
-router.post('/update_report', async(req, res) => {
-    try {
-        await generatePDFWithCharts()
-
-        res.status(200).send("Report Updated!")
-    } catch (err) {
-        console.log(err)
-        res.status(500).send(err)
-    }
-})
-
-router.get('/generate_report', async(req, res) => {
-    // const loc = __dirname + '/resources/report.pdf'
-    // var filestream = fs.createReadStream(loc);
-    // filestream.pipe(res);
-
-    try {
-        //await generatePDFWithCharts()
-        console.log(req.query)
-        if (req.query?.past, req.query?.from) await generatePDFWithCharts(true, req.query?.from, req.query?.to)
-        setTimeout(() => {
-            const binaryData = fs.readFileSync(`./utils/resources/report${req.query?.past? "_past" : ""}.pdf`);
-
-            const base64String = Buffer.from(binaryData).toString('base64');
-            
-            res.status(200).send(base64String)
-        }, 500);
-        
-    } catch (err) {
-        console.log(err)
-        res.status(500).send(err)
-    }
-    
-    // res.download("./utils/resources/report.pdf", function (err) {
-    //     if (err) {
-    //         console.log('error: ', err);
-    //     } else {
-    //         console.log('Sent: report.pd');
-    //     }
-    // })
-})
 
 router.post('/send_email', async(req, res) => {
     try {

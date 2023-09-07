@@ -14,20 +14,18 @@ require("dotenv").config();
 
 const api = require("./utils/api");
 
-app.use("/dashboard_be/api", api);
+app.use("/api", api);
 
 app.use(bodyParser.json());
 
 app.use(cors({origin: true}));
 
-require("./utils/cronTab")
-
-app.get("/dashboard_be", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Hello world")
 })
 
 app.listen(process.env.PORT, function () {
-    console.log("started at 8080");
+    console.log(`started at ${process.env.PORT}`);
 });
 
 
