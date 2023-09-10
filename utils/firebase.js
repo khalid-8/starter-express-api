@@ -4,11 +4,14 @@ const {getAuth} = require("firebase-admin/auth")
 
 require('dotenv').config()
 
+const key = process.env.DB_PRIVATE_KEY
+? process.env.DB_PRIVATE_KEY.replace(/\\n/gm, "\n")
+: undefined
 const cred = {
   "type": process.env.DB_TYPE,
   "project_id": process.env.DB_PROJECT_ID,
   "private_key_id": process.env.DB_PRIVATE_KEY_ID,
-  "private_key": process.env.DB_PRIVATE_KEY,
+  "private_key": key,
   "client_email": process.env.DB_CLIENT_EMAIL,
   "client_id": process.env.DB_CLIENT_ID,
   "auth_uri": process.env.DB_AUTH_URI,
@@ -18,6 +21,7 @@ const cred = {
   "universe_domain" : process.env.DB_UNIVERSE_DOMAIN
 }
 
+console.log(cred)
 
 admin.initializeApp({
     credential: admin.credential.cert(cred),
