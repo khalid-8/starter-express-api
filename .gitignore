@@ -69,3 +69,5 @@ node_modules/
 .vs
 
 iisnode/
+
+/admin-sdk-key
