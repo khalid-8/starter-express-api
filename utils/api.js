@@ -5,18 +5,18 @@ const cors = require('cors')
 const {auth, admin} = require('./firebase')
 const fs = require('fs')
 
-var whitelist = ['http://samco-jed-ap02', 'http://localhost:3000', 'http://samco-jed-ap02/dashboard/']
+var whitelist = ['https://khalid-8.github.io','https://khalid-8.github.io/SAMCO_PROD_LINE_DASHBOARD']
 
 var corsOptions = {
-    /*origin: function (origin, callback) {
+    origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
             callback(null, true)
             console.log("OLE")
         } else {
             callback(new Error(`Not allowed by CORS from origin: ${origin}`))
         }
-    }*/
-    origin: "*",
+    },
+    //origin: "https://khalid-8.github.io/SAMCO_PROD_LINE_DASHBOARD",
     optionsSuccessStatus: 200 // For legacy browser support
 }
 
