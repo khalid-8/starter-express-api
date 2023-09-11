@@ -174,10 +174,10 @@ async function sendWarning(email, line, subject, msg) {
         const options = {
             from: "Line Efficiency Dashboard <production_line_efficiency@samco.com.sa>",
             to: email,
-            subject: `WARNING: ${subject} NOTICE!`,
+            subject: `${subject} Alert: ${line}`,
             text: `
             Hello,
-            Your recived the following message from ${line}:
+            You've received the following alert:
             ${msg}`,
             html: `
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -263,7 +263,7 @@ async function sendWarning(email, line, subject, msg) {
                         Hello,
                         </p>
                         <p style="color: rgb(35, 35, 35);">
-                        You received the following message from ${line}:
+                        You've received the following alert:
                         </p>
                         <blockquote style="color: #36454F; font-weight: 900; padding: 10px; border-left: 5px solid rgba(0, 0, 0, .70);  border-radius: 5px;">
                         ${msg}
